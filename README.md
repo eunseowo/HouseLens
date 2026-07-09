@@ -145,7 +145,7 @@ streamlit run app.py
 │   └── model_df.csv            # 피처 엔지니어링 및 회귀분석용 데이터
 ├── 01_Data_Preprocessing.ipynb # 원천 데이터 병합 및 전처리 노트북
 ├── 02_EDA_Feature_Engineering.ipynb # 탐색적 데이터 분석 및 피처 설계 노트북
-├── 03_Modeling.ipynb           # OLS 다중선형회귀분석 및 VIF 검증 노트북
+├── 03_Modeling.ipynb           # OLS 다중선형회귀분석 노트북
 ├── requirements.txt            # 파이썬 의존성 패키지 목록
 ├── .env.example                # 환경 변수 설정 템플릿 (보안 고려 샘플 파일)
 ├── .gitignore                  # Git 업로드 제외 파일 정의
