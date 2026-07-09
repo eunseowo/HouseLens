@@ -143,7 +143,6 @@ streamlit run app.py
 ├── data/                       # 전처리 완료 분석용 CSV 데이터
 │   ├── merged_df.csv           # 월별 통합 거시경제 및 거래량 데이터
 │   └── model_df.csv            # 피처 엔지니어링 및 회귀분석용 데이터
-├── raw/                        # 2020.01~2026.06 월별 원천 실거래가 데이터 (선택적 포함)
 ├── 01_Data_Preprocessing.ipynb # 원천 데이터 병합 및 전처리 노트북
 ├── 02_EDA_Feature_Engineering.ipynb # 탐색적 데이터 분석 및 피처 설계 노트북
 ├── 03_Modeling.ipynb           # OLS 다중선형회귀분석 및 VIF 검증 노트북
