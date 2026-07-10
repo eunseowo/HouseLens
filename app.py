@@ -41,13 +41,13 @@ def apply_custom_css():
 
 @st.cache_data
 def load_merged_data():
-    df = pd.read_csv("data/merged_df.csv")
+    df = pd.read_csv("/Users/CHOIEUNSEO/Desktop/AI·AX 전문가 과정/프로젝트/data/merged_df.csv")
     df['날짜'] = pd.to_datetime(df['년'].astype(str) + '-' + df['월'].astype(str) + '-01')
     return df
 
 @st.cache_data
 def load_model_data():
-    df = pd.read_csv("data/model_df.csv")
+    df = pd.read_csv("/Users/CHOIEUNSEO/Desktop/AI·AX 전문가 과정/프로젝트/data/model_df.csv")
     return df
 
 def configure_sidebar(df):
@@ -318,23 +318,28 @@ def draw_eda(df):
 
         st.dataframe(summary_df.set_index('연월'), use_container_width=True, height=350)
 
-def draw_economy(df):
+def draw_economy(df, model_df=None):
     st.subheader("경제지표 분석")
     if df.empty:
         st.warning("선택한 조건에 해당하는 데이터가 없습니다.")
         return
 
-    vars_to_corr = ['거래량', '기준금리', '주택담보대출금리', '아파트 매매가격지수', '소비자물가지수']
-    existing_vars = [v for v in vars_to_corr if v in df.columns]
-
     col_heat1, col_heat2 = st.columns([2, 1])
     with col_heat1:
-        corr_df = df[existing_vars].corr()
-        fig_corr = px.imshow(corr_df, text_auto=".2f", aspect="auto", color_continuous_scale='RdBu_r', title="경제지표 상관관계 Heatmap")
+        if model_df is not None:
+            vars_to_corr = ['거래량', '기준금리_변화', '주담대금리_변화', '소비자물가지수_변화율', '아파트매매가격지수_변화율']
+            existing_vars = [v for v in vars_to_corr if v in model_df.columns]
+            corr_df = model_df[existing_vars].corr()
+            fig_corr = px.imshow(corr_df, text_auto=".2f", aspect="auto", color_continuous_scale='RdBu_r', title="파생변수 상관관계 Heatmap")
+        else:
+            vars_to_corr = ['거래량', '기준금리', '주택담보대출금리', '아파트 매매가격지수', '소비자물가지수']
+            existing_vars = [v for v in vars_to_corr if v in df.columns]
+            corr_df = df[existing_vars].corr()
+            fig_corr = px.imshow(corr_df, text_auto=".2f", aspect="auto", color_continuous_scale='RdBu_r', title="경제지표 상관관계 Heatmap")
         st.plotly_chart(fig_corr, use_container_width=True)
     with col_heat2:
         st.markdown("<br><br><br>", unsafe_allow_html=True)
-        st.info("**[히트맵 설명]**\n\n색의 농도는 변수 간 상관관계의 강도를 의미하며, 붉은색은 양(+)의 상관관계, 푸른색은 음(-)의 상관관계를 나타냅니다. 색이 진할수록 두 변수 간의 연관성이 더욱 강함을 의미합니다. 분석 결과, 거래량은 주택담보대출금리가 상승할수록 감소하는 경향을 보였으며, 기준금리, 주택담보대출금리, 소비자물가지수는 높은 양의 상관관계를 보여 거시경제 지표들이 서로 밀접하게 연계되어 움직이는 특성을 확인할 수 있었습니다.")
+        st.info("**[히트맵 설명]**\n\n색의 농도는 변수 간 상관관계의 강도를 의미하며, 붉은색은 양(+)의 상관관계, 푸른색은 음(-)의 상관관계를 나타냅니다. 색이 진할수록 두 변수 간의 연관성이 더욱 강함을 의미합니다. 파생변수 기준으로 분석한 결과, 거래량은 아파트매매가격지수 변화율과 뚜렷한 양(+)의 상관관계(0.52)를 보였으며, 기준금리 변화(-0.34) 및 주담대금리 변화(-0.28)와는 음(-)의 상관관계를 나타내어 금리 상승 시 거래량이 감소하는 경향을 확인할 수 있습니다.")
 
     st.markdown("### 거시경제 지표 vs 거래량")
 
@@ -649,7 +654,7 @@ def main():
     elif menu == "거래량 분석":
         draw_eda(filtered_df)
     elif menu == "경제지표 분석":
-        draw_economy(filtered_df)
+        draw_economy(filtered_df, model_df)
     elif menu == "회귀분석 결과":
         draw_regression(model_df)
     elif menu == "시나리오 분석":
