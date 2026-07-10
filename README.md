@@ -9,7 +9,7 @@
 
 **HouseLens**는 서울특별시 아파트 실거래가 및 거래량 데이터와 한국은행·통계청·한국부동산원의 거시경제 지표(금리, 물가, 매매가격지수)를 결합하여 다중선형회귀분석(OLS)을 수행하고, 실시간 **What-If 시나리오 시뮬레이션**을 제공하는 인터랙티브 웹 대시보드 프로젝트입니다.
 
-> 💡 **HouseLens 프로젝트의 상세한 기획 배경, 시행착오 및 회고는 [![Notion](https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white)](https://icy-citron-b57.notion.site/HouseLens-399309f028f08096838dd0e2b52e56fa?source=copy_link)에서 확인하실 수 있습니다.**
+> 💡 **HouseLens 프로젝트의 상세한 기획 배경, 시행착오 및 회고는 [![Notion](https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white)](https://icy-citron-b57.notion.site/HouseLens-399309f028f08096838dd0e2b52e56fa)에서 확인하실 수 있습니다.**
 
 <img width="714" height="629" alt="Image" src="https://github.com/user-attachments/assets/2f769ad5-03e5-41b3-8e71-7904f0c66f40" />
 
