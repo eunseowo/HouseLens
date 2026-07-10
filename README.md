@@ -10,6 +10,9 @@
 
 <img width="714" height="629" alt="Image" src="https://github.com/user-attachments/assets/2f769ad5-03e5-41b3-8e71-7904f0c66f40" />
 
+<br>
+<br>
+
 📌 **Toy Project**
 
 거시경제 지표를 활용하여 서울 아파트 거래량을 분석하고,
