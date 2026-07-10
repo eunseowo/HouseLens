@@ -30,6 +30,8 @@
 3. **인터랙티브 시나리오 시뮬레이션:** 현재(2026년 5월) 거래량을 기준점으로 설정하고, 주담대금리 및 매매가격지수 변화에 따른 실질 예상 거래량 증감 시각화
 
 ---
+<img width="714" height="629" alt="Image" src="https://github.com/user-attachments/assets/2f769ad5-03e5-41b3-8e71-7904f0c66f40" />
+---
 
 ## 👥 2. 타겟 수요층 (Target Users)
 
